@@ -34,19 +34,3 @@ To make the "thought process" visible to the human eye, the live streaming scrip
 Due to a 3-meter physical gap between Conv Layer 4 and Maxpool Layer 2, the 800kHz WS2812B square-wave signal experienced severe degradation (capacitance and resistance loss). We engineered a **Dual-Pin Architecture** on the Arduino to fix this:
 * **Pin 5:** Drives the first 1,120 LEDs (Conv 1 ➔ Conv 4).
 * **Pin 6:** Injects a fresh, uncorrupted 5V TTL signal directly into the final 43 LEDs across the gap.
-
-## 📂 Repository Structure
-
-```text
-├── model/
-│   ├── tiny_vgg_fruits.pth       # Saved model weights
-│   └── model_architecture.py     # PyTorch TinyVGG definition
-├── tensors/
-│   ├── anim_apple.npy            # Pre-rendered activation video for Apple
-│   ├── anim_banana.npy           # Pre-rendered activation video for Banana
-│   └── anim_orange.npy           # Pre-rendered activation video for Orange
-├── src/
-│   ├── generator.py              # Script to generate .npy files via PyTorch hooks
-│   ├── live_demo.py              # The interactive Jury CLI and Serial streamer
-│   └── dual_pin_test.ino         # Arduino C++ driver with bit-banging logic
-└── README.md
